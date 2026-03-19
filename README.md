@@ -25,7 +25,7 @@ So I took the best ideas from all of them, combined them, and built something th
 
 **The result**: Plans with zero assumptions. Code with enforced quality. Features verified by an automated QA tester.
 
-— **Surya Devera Konda**
+— **Suryatheja Deverakonda**
 
 ---
 
