@@ -1,0 +1,54 @@
+{
+  "skill_name": "deliberate-execute",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Execute this plan:\n\nStep 1: Add HELD state to BookingState enum in src/types/booking.ts\nStep 2: Create soft hold API endpoint at src/app/api/bookings/hold/route.ts\nStep 3: Add hold timeout cron job\n\nFiles: src/types/booking.ts, src/app/api/bookings/hold/route.ts, src/lib/cron.ts",
+      "expected_output": "Executed plan with TDD for each task, spec review, quality review, architect approval.",
+      "expectations": [
+        "Creates TodoWrite with all 3 tasks",
+        "For Step 1: Writes failing test BEFORE implementation code",
+        "For Step 1: Dispatches fresh implementer subagent with model: opus",
+        "For Step 1: Runs spec review with a SEPARATE subagent (not implementer)",
+        "For Step 1: Runs quality review with another separate subagent",
+        "For Step 2: Writes failing test for the API endpoint",
+        "For Step 2: Implementation uses context isolation (only task-relevant files)",
+        "For Step 3: Logs TDD SKIP reason if migration-only (or writes test if logic exists)",
+        "Runs full test suite after all tasks complete",
+        "Dispatches Architect verification subagent",
+        "Does not declare done until Architect returns APPROVED",
+        "Offers UAT after Architect approval",
+        "Does NOT create a PR without explicit user permission"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "quick fix the login button not responding on mobile in src/components/LoginForm.tsx",
+      "expected_output": "Quick mode execution with TDD still enforced despite being a small fix.",
+      "expectations": [
+        "Enters quick mode (skips multi-agent planning)",
+        "Still writes a failing test before fixing the button",
+        "Dispatches fresh implementer subagent",
+        "Runs spec review after implementation",
+        "Runs quality review after spec passes",
+        "Commits the fix",
+        "Does NOT run Architect verification (quick mode skips this)",
+        "Does NOT run UAT (quick mode skips this)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Execute this plan in parallel mode, don't stop until everything passes.\n\nStep 1: Add user avatar upload (src/components/AvatarUpload.tsx, src/app/api/upload/route.ts)\nStep 2: Add profile bio field (src/components/ProfileBio.tsx, src/app/api/profile/route.ts)\nStep 3: Connect avatar to profile page (src/app/profile/page.tsx)\n\nDependencies: Step 3 depends on Steps 1 and 2. Steps 1 and 2 are independent.",
+      "expected_output": "Parallel execution of Steps 1+2 simultaneously, then Step 3 sequentially. Persistent mode loops until Architect approves.",
+      "expectations": [
+        "Identifies Steps 1 and 2 as parallelizable (no shared files, no dependencies)",
+        "Dispatches Steps 1 and 2 with run_in_background: true",
+        "Waits for both to complete before starting Step 3",
+        "Step 3 runs sequentially after Steps 1 and 2",
+        "Each task still gets full TDD + spec review + quality review cycle",
+        "Persistent mode: loops Architect verification until APPROVED",
+        "Does not give up after first Architect rejection"
+      ]
+    }
+  ]
+}

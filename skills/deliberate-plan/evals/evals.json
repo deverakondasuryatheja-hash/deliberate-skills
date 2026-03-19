@@ -1,0 +1,55 @@
+{
+  "skill_name": "deliberate-plan",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Plan the multi-slot booking system for a room-sharing platform. Users need to book 2+ time slots atomically with rollback on partial failure. We use Next.js, Supabase, and PostGIS.",
+      "expected_output": "A confidence-scored plan with numbered implementation steps, file paths, verification criteria, and zero unverified assumptions.",
+      "expectations": [
+        "Asks product review questions before technical planning (what problem, who, why now)",
+        "Scores request clarity across dimensions (scope, success criteria, constraints, context, non-goals)",
+        "Classifies task type as IMPLEMENT",
+        "Performs web research on booking patterns (Stripe, Airbnb, state machines)",
+        "Assembles 5-6 task-adapted agents including Harsh Critic and Assumption Auditor",
+        "Produces numbered implementation steps with specific file paths",
+        "Each step has a verification criterion (how to check it worked)",
+        "Includes a confidence score with 6 weighted dimensions",
+        "Contains an assumption audit table with zero unverified assumptions",
+        "Harsh Critic verdict is PASS or CONDITIONAL PASS with severity ratings",
+        "Pre-mortem analysis covers at least 3 failure categories",
+        "Saves artifacts to .deliberate-plan/artifacts/"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Fix the race condition where two users can book the same slot simultaneously. The booking table is in Supabase with RLS enabled.",
+      "expected_output": "A FIX-type plan that diagnoses the race condition, researches Supabase locking patterns, and produces a specific fix plan.",
+      "expectations": [
+        "Classifies task type as FIX",
+        "Asks targeted diagnostic questions (reproduction steps, frequency, affected users)",
+        "Researches Supabase row-level locking and SELECT FOR UPDATE patterns",
+        "Reads the actual codebase to find the booking endpoint",
+        "Assembles FIX-appropriate agents (Debugger, Backend Developer, etc.)",
+        "Plan includes specific file paths for the fix",
+        "Addresses the root cause (not just symptoms)",
+        "Includes rollback strategy if fix causes new issues",
+        "Confidence score reflects certainty about root cause"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Design the architecture for adding real-time notifications when a booking is confirmed, cancelled, or modified. Should work across web and mobile.",
+      "expected_output": "A DESIGN-type plan covering WebSocket vs SSE vs push, with architecture diagram description and implementation steps.",
+      "expectations": [
+        "Classifies task type as DESIGN",
+        "Asks domain preferences (WebSocket vs SSE vs polling, push notification service)",
+        "Researches real-time notification patterns for Next.js + Supabase",
+        "Assembles DESIGN-appropriate agents (Architect, Frontend, Backend, Mobile)",
+        "Debates trade-offs between approaches (at least 2 alternatives compared)",
+        "Plan covers both web and mobile as specified",
+        "Includes scaling considerations",
+        "Addresses offline/reconnection scenarios"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "deliberate-skills",
+  "version": "3.0.0",
+  "description": "Multi-agent planning + TDD-enforced execution for Claude Code. The deepest planning and most disciplined execution skills in the ecosystem.",
+  "main": "bin/install.js",
+  "bin": {
+    "deliberate-skills": "bin/install.js"
+  },
+  "scripts": {
+    "install-claude": "node bin/install.js --claude --global",
+    "install-local": "node bin/install.js --claude --local"
+  },
+  "keywords": [
+    "claude-code",
+    "agent-skills",
+    "tdd",
+    "multi-agent",
+    "planning",
+    "code-review",
+    "deliberation",
+    "debugging",
+    "uat",
+    "browser-testing"
+  ],
+  "author": "Surya Devera Konda",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/suryadevera/deliberate-skills"
+  }
+}

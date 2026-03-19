@@ -1,0 +1,174 @@
+{
+  "description": "Trigger evaluation for deliberate-plan and deliberate-execute skills. Tests whether the correct skill fires on various natural language prompts.",
+  "skills_under_test": ["deliberate-plan", "deliberate-execute"],
+  "queries": [
+    {
+      "id": 1,
+      "prompt": "plan the authentication system for our Next.js app",
+      "expected_skill": "deliberate-plan",
+      "category": "explicit_plan",
+      "notes": "Direct 'plan' keyword"
+    },
+    {
+      "id": 2,
+      "prompt": "how should we implement the booking feature?",
+      "expected_skill": "deliberate-plan",
+      "category": "implicit_plan",
+      "notes": "'how should we implement' = planning signal"
+    },
+    {
+      "id": 3,
+      "prompt": "think through the migration from Prisma to Drizzle",
+      "expected_skill": "deliberate-plan",
+      "category": "implicit_plan",
+      "notes": "'think through' = planning signal"
+    },
+    {
+      "id": 4,
+      "prompt": "design the approach for real-time notifications",
+      "expected_skill": "deliberate-plan",
+      "category": "explicit_plan",
+      "notes": "'design the approach' = explicit trigger"
+    },
+    {
+      "id": 5,
+      "prompt": "I need a deep plan for the payment integration",
+      "expected_skill": "deliberate-plan",
+      "category": "explicit_plan",
+      "notes": "'deep plan' = explicit trigger"
+    },
+    {
+      "id": 6,
+      "prompt": "create a plan for adding search functionality with pgvector",
+      "expected_skill": "deliberate-plan",
+      "category": "explicit_plan",
+      "notes": "'create a plan' = explicit trigger"
+    },
+    {
+      "id": 7,
+      "prompt": "let's deliberate on the best way to handle file uploads",
+      "expected_skill": "deliberate-plan",
+      "category": "explicit_plan",
+      "notes": "'deliberate' = explicit trigger"
+    },
+    {
+      "id": 8,
+      "prompt": "architect a system for handling concurrent bookings with soft holds",
+      "expected_skill": "deliberate-plan",
+      "category": "implicit_plan",
+      "notes": "'architect a system' = DESIGN task type"
+    },
+    {
+      "id": 9,
+      "prompt": "execute this plan",
+      "expected_skill": "deliberate-execute",
+      "category": "explicit_execute",
+      "notes": "'execute' = explicit trigger"
+    },
+    {
+      "id": 10,
+      "prompt": "build this now",
+      "expected_skill": "deliberate-execute",
+      "category": "explicit_execute",
+      "notes": "'build this' = explicit trigger"
+    },
+    {
+      "id": 11,
+      "prompt": "implement the booking system from the plan we just made",
+      "expected_skill": "deliberate-execute",
+      "category": "explicit_execute",
+      "notes": "'implement' = explicit trigger"
+    },
+    {
+      "id": 12,
+      "prompt": "go, start building",
+      "expected_skill": "deliberate-execute",
+      "category": "explicit_execute",
+      "notes": "'go' + 'start building' = explicit triggers"
+    },
+    {
+      "id": 13,
+      "prompt": "code this up",
+      "expected_skill": "deliberate-execute",
+      "category": "explicit_execute",
+      "notes": "'code this' = explicit trigger"
+    },
+    {
+      "id": 14,
+      "prompt": "ship this",
+      "expected_skill": "deliberate-execute",
+      "category": "explicit_execute",
+      "notes": "'ship this' = explicit trigger"
+    },
+    {
+      "id": 15,
+      "prompt": "quick fix the login button not responding on mobile",
+      "expected_skill": "deliberate-execute",
+      "category": "quick_mode",
+      "notes": "'quick fix' = quick mode trigger"
+    },
+    {
+      "id": 16,
+      "prompt": "just do the CSS changes for the header",
+      "expected_skill": "deliberate-execute",
+      "category": "quick_mode",
+      "notes": "'just do' = quick mode trigger"
+    },
+    {
+      "id": 17,
+      "prompt": "small change: update the error message in the booking modal",
+      "expected_skill": "deliberate-execute",
+      "category": "quick_mode",
+      "notes": "'small change' = quick mode trigger"
+    },
+    {
+      "id": 18,
+      "prompt": "what's the best way to structure a React component?",
+      "expected_skill": "none",
+      "category": "negative_general",
+      "notes": "General question — should NOT trigger either skill"
+    },
+    {
+      "id": 19,
+      "prompt": "help me debug this TypeScript error",
+      "expected_skill": "none",
+      "category": "negative_debug",
+      "notes": "Simple debug — not complex enough for deliberate skills"
+    },
+    {
+      "id": 20,
+      "prompt": "read the README and summarize it",
+      "expected_skill": "none",
+      "category": "negative_simple",
+      "notes": "Simple task — should not trigger any skill"
+    },
+    {
+      "id": 21,
+      "prompt": "I want to refactor the entire state management layer, plan it out thoroughly",
+      "expected_skill": "deliberate-plan",
+      "category": "implicit_plan",
+      "notes": "'refactor' + 'plan it out thoroughly' = REFACTOR type planning"
+    },
+    {
+      "id": 22,
+      "prompt": "execute the refactoring plan in parallel mode, don't stop until it's done",
+      "expected_skill": "deliberate-execute",
+      "category": "explicit_execute",
+      "notes": "'execute' + 'parallel' + 'don't stop' = parallel persistent mode"
+    },
+    {
+      "id": 23,
+      "prompt": "resume where we left off",
+      "expected_skill": "deliberate-execute",
+      "category": "session_resume",
+      "notes": "Should trigger session resume via HANDOFF.json check"
+    },
+    {
+      "id": 24,
+      "prompt": "show me the retro metrics for this milestone",
+      "expected_skill": "deliberate-execute",
+      "category": "retro",
+      "notes": "'retro metrics' = post-execution analysis trigger"
+    }
+  ]
+}
